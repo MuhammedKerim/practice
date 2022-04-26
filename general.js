@@ -1,438 +1,438 @@
-// class Node {
-//     constructor(val) {
-//         this.val = val;
-//         this.next = null;
-//     }
-// }
+class Node {
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+    }
+}
 
-// class SinglyLinkedList {
-//     constructor() {
-//         this.head = null;
-//         this.tail = null;
-//         this.length = 0;
-//     }
-//     push(val) {
-//         let newNode = new Node(val);
-//         if (!this.head) {
-//             this.head = newNode;
-//             this.tail = this.head;
-//         } else {
-//             this.tail.next = newNode;
-//             this.tail = newNode;
-//         }
-//         this.length++;
-//         return this;
-//     }
+class SinglyLinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+    push(val) {
+        let newNode = new Node(val);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = this.head;
+        } else {
+            this.tail.next = newNode;
+            this.tail = newNode;
+        }
+        this.length++;
+        return this;
+    }
 
-//     get(idx) {
-//         if (idx < 0 || idx > this.length - 1) return null;
-//         var node = this.head;
-//         for (let i = 0; i < idx; i++) {
-//             node = node.next;
-//         }
-//         return node;
-//     }
+    get(idx) {
+        if (idx < 0 || idx > this.length - 1) return null;
+        var node = this.head;
+        for (let i = 0; i < idx; i++) {
+            node = node.next;
+        }
+        return node;
+    }
 
-//     rotate(r) {
-//         if (Math.abs(r) > this.length) r = r % this.length;
-//         if (r < 0) r = this.length + r;
-//         console.log(r)
-//         var newHead = this.get(r);
-//         var newTail = this.get(r - 1)
-//         if (!newTail) return;
-//         this.tail.next = this.head;
-//         this.head = newHead;
-//         this.tail = newTail;
-//         this.tail.next = null;
-//     }
+    rotate(r) {
+        if (Math.abs(r) > this.length) r = r % this.length;
+        if (r < 0) r = this.length + r;
+        console.log(r)
+        var newHead = this.get(r);
+        var newTail = this.get(r - 1)
+        if (!newTail) return;
+        this.tail.next = this.head;
+        this.head = newHead;
+        this.tail = newTail;
+        this.tail.next = null;
+    }
 
-//     print() {
-//         var node = this.head;
-//         var body = '';
-//         while (node) {
-//             body += node.val + ' => ';
-//             node = node.next;
-//         }
-//         console.log(body + '|');
-//     }
+    print() {
+        var node = this.head;
+        var body = '';
+        while (node) {
+            body += node.val + ' => ';
+            node = node.next;
+        }
+        console.log(body + '|');
+    }
 
-// }
+}
 
-// function sortedFrequency(arr, num, l = 0, r = arr.length - 1) {
-//     // add whatever parameters you deem necessary - good luck!!!
-//     if (num < arr[0] || num > arr[arr.length - 1]) return -1;
+function sortedFrequency(arr, num, l = 0, r = arr.length - 1) {
+    // add whatever parameters you deem necessary - good luck!!!
+    if (num < arr[0] || num > arr[arr.length - 1]) return -1;
 
-//     if (l == r) return arr[l] === num ? 1 : 0;
-//     var m = Math.floor(l + ((r - l) / 2));
-//     if (arr[m] < num) {
-//         return sortedFrequency(arr, num, m + 1, r);
-//     }
-//     if (arr[m] > num) {
-//         return sortedFrequency(arr, num, l, m - 1);
-//     }
-//     if (arr[m] == num) {
-//         return 1 + sortedFrequency(arr, num, l, m - 1) + sortedFrequency(arr, num, m + 1, r)
-//     }
-// }
-
-
-// function findRotatedIndex(arr, num, l = 0, r = arr.length - 1) {
-//     // add whatever parameters you deem necessary - good luck!
-//     if (l > r) return -1;
-//     var m = Math.floor(l + ((r - l) / 2));
-//     if (arr[m] == num) return m;
-
-//     var left = arr[l];
-//     var right = arr[r];
-//     var mid = arr[m];
-
-//     if (left > right && mid > left && mid > right) {
-//         if (num > left && num < mid) return findRotatedIndex(arr, num, l, m - 1);
-//         if (num < left || num > right) return findRotatedIndex(arr, num, m + 1, r);
-
-//         else return findRotatedIndex(arr, num, l, m - 1);
-//     } else if (left > right && left > mid) {
-//         if (num >= left) return findRotatedIndex(arr, num, l, m - 1);
-//         if (num > mid) return findRotatedIndex(arr, num, m + 1, r);
-//         else return findRotatedIndex(arr, num, l, m - 1);
-//     } else {
-//         if (num > mid && num <= right) return findRotatedIndex(arr, num, m + 1, r);
-//         else return findRotatedIndex(arr, num, l, m - 1);
-//     }
-// }
-
-// // var res = findRotatedIndex([6, 7, 8, 9, 1, 2, 3, 4], 8)
-// // // var res = findRotatedIndex([11, 12, 13, 14, 15, 16, 3, 5, 7, 9], 16)
-// // console.log('Res ', res)
-
-// function swap(arr, i, j) {
-//     var temp = arr[i];
-//     arr[i] = arr[j];
-//     arr[j] = temp;
-// }
-
-// function strComp(a, b) {
-//     if (a < b) return -1;
-//     if (a > b) return 1;
-//     return 0;
-// }
-
-// function oldestToYoungest(a, b) {
-//     return b.age - a.age;
-// }
-
-// function bubbleSort(arr, comparator = null) {
-//     // add whatever parameters you deem necessary - good luck!
-//     if (typeof comparator !== 'function') {
-//         comparator = function (a, b) {
-//             return a - b;
-//         }
-//     }
-//     var swapFlag = true;
-//     for (let i = 0; swapFlag && i < arr.length - 1; i++) {
-//         swapFlag = false;
-//         for (let j = 0; j < arr.length - 1; j++) {
-//             // console.log(arr[j], arr[j + 1])
-//             if (comparator(arr[j], arr[j + 1]) > 0) {
-//                 // console.log('Swap')
-//                 swap(arr, j, j + 1)
-//                 swapFlag = true;
-//             }
-//         }
-//     }
-//     return arr;
-
-// }
-
-// var kities = ['LilBub', 'Garfield', 'Heathcliff', 'Blue', 'Grumpy']
-
-// var moarKittyData = [{
-//     name: 'LilBub',
-//     age: 7
-// }, {
-//     name: 'Garfield',
-//     age: 40
-// }, {
-//     name: 'Heathcliff',
-//     age: 45
-// }, {
-//     name: 'Blue',
-//     age: 1
-// }, {
-//     name: 'Grumpy',
-//     age: 6
-// }]
-
-// // var res = bubbleSort([0, -10, 7, 4])
-// // var res = bubbleSort(kities, strComp)
-// // var res = bubbleSort(moarKittyData, oldestToYoungest)
-// // console.log('Res ', res)
+    if (l == r) return arr[l] === num ? 1 : 0;
+    var m = Math.floor(l + ((r - l) / 2));
+    if (arr[m] < num) {
+        return sortedFrequency(arr, num, m + 1, r);
+    }
+    if (arr[m] > num) {
+        return sortedFrequency(arr, num, l, m - 1);
+    }
+    if (arr[m] == num) {
+        return 1 + sortedFrequency(arr, num, l, m - 1) + sortedFrequency(arr, num, m + 1, r)
+    }
+}
 
 
-// function swap(arr, i, j) {
-//     var temp = arr[i];
-//     arr[i] = arr[j];
-//     arr[j] = temp;
-// }
+function findRotatedIndex(arr, num, l = 0, r = arr.length - 1) {
+    // add whatever parameters you deem necessary - good luck!
+    if (l > r) return -1;
+    var m = Math.floor(l + ((r - l) / 2));
+    if (arr[m] == num) return m;
 
-// function selectionSort(arr) {
-//     // add whatever parameters you deem necessary - good luck!
-//     var min;
-//     for (let i = 0; i < arr.length; i++) {
-//         min = i;
-//         for (let j = i; j < arr.length; j++) {
-//             if (arr[min] > arr[j]) min = j;
-//         }
-//         console.log(i, min)
-//         swap(arr, i, min);
-//     }
-//     return arr;
-// }
+    var left = arr[l];
+    var right = arr[r];
+    var mid = arr[m];
 
-// // var res = selectionSort([3, 2, 1])
-// // console.log('Res ', res)
+    if (left > right && mid > left && mid > right) {
+        if (num > left && num < mid) return findRotatedIndex(arr, num, l, m - 1);
+        if (num < left || num > right) return findRotatedIndex(arr, num, m + 1, r);
 
+        else return findRotatedIndex(arr, num, l, m - 1);
+    } else if (left > right && left > mid) {
+        if (num >= left) return findRotatedIndex(arr, num, l, m - 1);
+        if (num > mid) return findRotatedIndex(arr, num, m + 1, r);
+        else return findRotatedIndex(arr, num, l, m - 1);
+    } else {
+        if (num > mid && num <= right) return findRotatedIndex(arr, num, m + 1, r);
+        else return findRotatedIndex(arr, num, l, m - 1);
+    }
+}
 
-// function swap(arr, i, j) {
-//     var temp = arr[i];
-//     arr[i] = arr[j];
-//     arr[j] = temp;
-// }
+// var res = findRotatedIndex([6, 7, 8, 9, 1, 2, 3, 4], 8)
+// // var res = findRotatedIndex([11, 12, 13, 14, 15, 16, 3, 5, 7, 9], 16)
+// console.log('Res ', res)
 
-// function insertionSort(arr, comp) {
-//     // add whatever parameters you deem necessary - good luck!
-//     if (!comp) {
-//         comp = (a, b) => {
-//             return a - b;
-//         }
-//     }
-//     var i = 0;
-//     var j = 0;
-//     while (j < arr.length - 1) {
-//         j++;
-//         var temp = arr[j];
-//         while (i >= 0 && comp(temp, arr[i]) < 0) {
-//             arr[i + 1] = arr[i];
-//             i--;
-//         }
-//         arr[i + 1] = temp;
-//         i = j;
-//     }
-//     return arr;
-// }
+function swap(arr, i, j) {
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
 
+function strComp(a, b) {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+}
 
-// // var res = insertionSort([3, 2, 1])
-// // var res = insertionSort(kities, strComp)
-// // var res = insertionSort(moarKittyData, oldestToYoungest)
-// // console.log('Res ', res)
+function oldestToYoungest(a, b) {
+    return b.age - a.age;
+}
 
+function bubbleSort(arr, comparator = null) {
+    // add whatever parameters you deem necessary - good luck!
+    if (typeof comparator !== 'function') {
+        comparator = function (a, b) {
+            return a - b;
+        }
+    }
+    var swapFlag = true;
+    for (let i = 0; swapFlag && i < arr.length - 1; i++) {
+        swapFlag = false;
+        for (let j = 0; j < arr.length - 1; j++) {
+            // console.log(arr[j], arr[j + 1])
+            if (comparator(arr[j], arr[j + 1]) > 0) {
+                // console.log('Swap')
+                swap(arr, j, j + 1)
+                swapFlag = true;
+            }
+        }
+    }
+    return arr;
 
-// var arr1 = [1, 2, 3];
-// var arr2 = [4, 5, 6];
+}
 
+var kities = ['LilBub', 'Garfield', 'Heathcliff', 'Blue', 'Grumpy']
 
-// function merge(arr1, arr2, comp) {
-//     // add whatever parameters you deem necessary - good luck!
-//     if (!comp) {
-//         comp = (a, b) => a - b;
-//     }
-//     var n1 = arr1.length;
-//     var n2 = arr2.length;
-//     var merged = [];
-//     let i = 0;
-//     let j = 0;
-//     while (1) {
-//         if (comp(arr1[i], arr2[j]) < 0) {
-//             merged.push(arr1[i]);
-//             i++;
-//         } else {
-//             merged.push(arr2[j]);
-//             j++;
-//         }
+var moarKittyData = [{
+    name: 'LilBub',
+    age: 7
+}, {
+    name: 'Garfield',
+    age: 40
+}, {
+    name: 'Heathcliff',
+    age: 45
+}, {
+    name: 'Blue',
+    age: 1
+}, {
+    name: 'Grumpy',
+    age: 6
+}]
 
-//         if (i == n1) {
-//             merged = merged.concat([...arr2.slice(j)]);
-//             return merged;
-//         }
-//         if (j == n2) {
-//             merged = merged.concat(...arr1.slice(i));
-//             return merged;
-//         }
-//     }
-// }
-
-
-// function mergeSort(arr, comp = null) {
-//     if (arr.length <= 1) return arr;
-//     var m = Math.floor(arr.length / 2);
-//     var left = mergeSort(arr.slice(0, m), comp);
-//     var right = mergeSort(arr.slice(m), comp);
-//     return merge(left, right, comp);
-// }
-// // var res = merge(arr1, arr2);
-
-// function swap(arr, i, j) {
-//     [arr[i], arr[j]] = [arr[j], arr[i]];
-// }
-
-// function strLength(a, b) {
-//     return a.length - b.length;
-// }
-
-// function swap(arr, i, j) {
-//     [arr[i], arr[j]] = [arr[j], arr[i]];
-// }
+// var res = bubbleSort([0, -10, 7, 4])
+// var res = bubbleSort(kities, strComp)
+// var res = bubbleSort(moarKittyData, oldestToYoungest)
+// console.log('Res ', res)
 
 
-// function pivot(arr, comparator, start = 0, end = arr.length - 1) {
-//     // good luck!
-//     if (!comparator) {
-//         comparator = (a, b) => a - b;
-//     }
-//     var pVal = arr[start];
-//     var pIdx = start;
-//     for (let i = start; i <= end; i++) {
-//         if (comparator(pVal, arr[i]) > 0) {
-//             pIdx++;
-//             swap(arr, pIdx, i);
-//         }
-//     }
-//     swap(arr, pIdx, start);
-//     return pIdx;
-// }
+function swap(arr, i, j) {
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
 
-// function quickSort(arr, comparator = null, l = 0, r = arr.length - 1) {
-//     // good luck!
-//     if (l >= r) return;
-//     var p = pivot(arr, comparator, l, r);
-//     quickSort(arr, comparator, l, p)
-//     quickSort(arr, comparator, p + 1, r);
-//     return arr;
-// }
+function selectionSort(arr) {
+    // add whatever parameters you deem necessary - good luck!
+    var min;
+    for (let i = 0; i < arr.length; i++) {
+        min = i;
+        for (let j = i; j < arr.length; j++) {
+            if (arr[min] > arr[j]) min = j;
+        }
+        console.log(i, min)
+        swap(arr, i, min);
+    }
+    return arr;
+}
+
+// var res = selectionSort([3, 2, 1])
+// console.log('Res ', res)
 
 
+function swap(arr, i, j) {
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
 
-// // var res = quickSort([4, 2, 12, 10, 7, 9]);
-// // console.log(res)
-
-
-// function getDigit(num, i) {
-//     // good luck!
-//     return Math.floor((num % Math.pow(10, i + 1)) / Math.pow(10, i));
-// }
-
-// function digitCount(num) {
-//     // good luck!
-//     var numOfDigits = 1;
-//     var i = 1;
-//     while (Math.floor(num / Math.pow(10, i))) {
-//         numOfDigits++;
-//         i++;
-//     }
-//     return numOfDigits;
-// }
-
-
-// function mostDigits(nums) {
-//     // good luck!
-//     var max = 0;
-//     nums.forEach((num) => {
-//         var d = digitCount(num);
-//         if (d > max) max = d;
-//     });
-//     return max;
-// }
+function insertionSort(arr, comp) {
+    // add whatever parameters you deem necessary - good luck!
+    if (!comp) {
+        comp = (a, b) => {
+            return a - b;
+        }
+    }
+    var i = 0;
+    var j = 0;
+    while (j < arr.length - 1) {
+        j++;
+        var temp = arr[j];
+        while (i >= 0 && comp(temp, arr[i]) < 0) {
+            arr[i + 1] = arr[i];
+            i--;
+        }
+        arr[i + 1] = temp;
+        i = j;
+    }
+    return arr;
+}
 
 
-// function radixSort(nums) {
-//     // good luck!
-
-//     // sort based on 0th digit to max
-//     var maxDigits = mostDigits(nums);
-//     // 0   1   2   3   4   5   6   7   8   9
-//     for (let i = 0; i < maxDigits; i++) {
-//         // put each number in the correct bucket
-//         var buckets = [
-//             [],
-//             [],
-//             [],
-//             [],
-//             [],
-//             [],
-//             [],
-//             [],
-//             [],
-//             []
-//         ];
-//         for (let j = 0; j < nums.length; j++) {
-//             var digitAtJ = getDigit(nums[j], i);
-//             buckets[digitAtJ].push(nums[j]);
-//         }
-//         nums = [].concat(...buckets);
-//     }
-//     return nums;
-// }
-// var res = radixSort([10, 100, 1, 1000, 1000000]);
-
-// class Node {
-//     constructor(value) {
-//         this.value = value;
-//         this.next = null;
-//     }
-// }
-
-// class Queue {
-//     constructor() {
-//         this.first = null;
-//         this.last = null;
-//         this.size = 0;
-//     }
-//     enqueue(data) {
-//         var node = new Node(data);
-
-//         if (!this.first) {
-//             this.first = node;
-//             this.last = node;
-//         } else {
-//             this.last.next = node;
-//             this.last = node;
-//         }
-
-//         return ++this.size;
-//     }
-//     dequeue() {
-//         if (!this.first) return null;
-
-//         var temp = this.first;
-//         if (this.first == this.last) {
-//             this.last = null;
-//         }
-//         this.first = this.first.next;
-//         this.size--;
-//         return temp.value;
-//     }
-// }
+// var res = insertionSort([3, 2, 1])
+// var res = insertionSort(kities, strComp)
+// var res = insertionSort(moarKittyData, oldestToYoungest)
+// console.log('Res ', res)
 
 
-// class Stack {
-//     constructor() {
-//         this.queue = new Queue();
-//     }
-//     push(val) {
-//         var queue2 = new Queue();
-//         queue2.enqueue(val);
-//         while (this.queue.size) {
-//             queue2.enqueue(this.queue.dequeue());
-//         }
-//         this.queue = queue2;
-//         return this;
-//     }
-//     pop() {
-//         return this.queue.dequeue();
-//     }
-// }
-/*
+var arr1 = [1, 2, 3];
+var arr2 = [4, 5, 6];
+
+
+function merge(arr1, arr2, comp) {
+    // add whatever parameters you deem necessary - good luck!
+    if (!comp) {
+        comp = (a, b) => a - b;
+    }
+    var n1 = arr1.length;
+    var n2 = arr2.length;
+    var merged = [];
+    let i = 0;
+    let j = 0;
+    while (1) {
+        if (comp(arr1[i], arr2[j]) < 0) {
+            merged.push(arr1[i]);
+            i++;
+        } else {
+            merged.push(arr2[j]);
+            j++;
+        }
+
+        if (i == n1) {
+            merged = merged.concat([...arr2.slice(j)]);
+            return merged;
+        }
+        if (j == n2) {
+            merged = merged.concat(...arr1.slice(i));
+            return merged;
+        }
+    }
+}
+
+
+function mergeSort(arr, comp = null) {
+    if (arr.length <= 1) return arr;
+    var m = Math.floor(arr.length / 2);
+    var left = mergeSort(arr.slice(0, m), comp);
+    var right = mergeSort(arr.slice(m), comp);
+    return merge(left, right, comp);
+}
+// var res = merge(arr1, arr2);
+
+function swap(arr, i, j) {
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+}
+
+function strLength(a, b) {
+    return a.length - b.length;
+}
+
+function swap(arr, i, j) {
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+}
+
+
+function pivot(arr, comparator, start = 0, end = arr.length - 1) {
+    // good luck!
+    if (!comparator) {
+        comparator = (a, b) => a - b;
+    }
+    var pVal = arr[start];
+    var pIdx = start;
+    for (let i = start; i <= end; i++) {
+        if (comparator(pVal, arr[i]) > 0) {
+            pIdx++;
+            swap(arr, pIdx, i);
+        }
+    }
+    swap(arr, pIdx, start);
+    return pIdx;
+}
+
+function quickSort(arr, comparator = null, l = 0, r = arr.length - 1) {
+    // good luck!
+    if (l >= r) return;
+    var p = pivot(arr, comparator, l, r);
+    quickSort(arr, comparator, l, p)
+    quickSort(arr, comparator, p + 1, r);
+    return arr;
+}
+
+
+
+// var res = quickSort([4, 2, 12, 10, 7, 9]);
+// console.log(res)
+
+
+function getDigit(num, i) {
+    // good luck!
+    return Math.floor((num % Math.pow(10, i + 1)) / Math.pow(10, i));
+}
+
+function digitCount(num) {
+    // good luck!
+    var numOfDigits = 1;
+    var i = 1;
+    while (Math.floor(num / Math.pow(10, i))) {
+        numOfDigits++;
+        i++;
+    }
+    return numOfDigits;
+}
+
+
+function mostDigits(nums) {
+    // good luck!
+    var max = 0;
+    nums.forEach((num) => {
+        var d = digitCount(num);
+        if (d > max) max = d;
+    });
+    return max;
+}
+
+
+function radixSort(nums) {
+    // good luck!
+
+    // sort based on 0th digit to max
+    var maxDigits = mostDigits(nums);
+    // 0   1   2   3   4   5   6   7   8   9
+    for (let i = 0; i < maxDigits; i++) {
+        // put each number in the correct bucket
+        var buckets = [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ];
+        for (let j = 0; j < nums.length; j++) {
+            var digitAtJ = getDigit(nums[j], i);
+            buckets[digitAtJ].push(nums[j]);
+        }
+        nums = [].concat(...buckets);
+    }
+    return nums;
+}
+var res = radixSort([10, 100, 1, 1000, 1000000]);
+
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class Queue {
+    constructor() {
+        this.first = null;
+        this.last = null;
+        this.size = 0;
+    }
+    enqueue(data) {
+        var node = new Node(data);
+
+        if (!this.first) {
+            this.first = node;
+            this.last = node;
+        } else {
+            this.last.next = node;
+            this.last = node;
+        }
+
+        return ++this.size;
+    }
+    dequeue() {
+        if (!this.first) return null;
+
+        var temp = this.first;
+        if (this.first == this.last) {
+            this.last = null;
+        }
+        this.first = this.first.next;
+        this.size--;
+        return temp.value;
+    }
+}
+
+
+class Stack {
+    constructor() {
+        this.queue = new Queue();
+    }
+    push(val) {
+        var queue2 = new Queue();
+        queue2.enqueue(val);
+        while (this.queue.size) {
+            queue2.enqueue(this.queue.dequeue());
+        }
+        this.queue = queue2;
+        return this;
+    }
+    pop() {
+        return this.queue.dequeue();
+    }
+}
+
 class Node {
     constructor(val) {
         this.val = val;
@@ -460,10 +460,8 @@ class Queue {
         return this.size;
     }
 }
-*/
 
-
-/* class Node {
+class Node {
     constructor(value) {
         this.value = value;
         this.left = null;
@@ -523,9 +521,6 @@ class BinarySearchTree {
     }
 }
 
- */
-
-/*
 class Node {
     constructor(value) {
         this.value = value;
@@ -648,8 +643,6 @@ class BinarySearchTree {
         return node;
     }
 }
-*/
-/*
 
 class Node {
     constructor(value) {
@@ -755,7 +748,6 @@ class BinarySearchTree {
     }
 }
 
-*/
 
 
 // var bst = new BinarySearchTree();
@@ -790,7 +782,7 @@ class BinarySearchTree {
 // bst.insert(93)
 // bst.insert(89)
 
-/*
+
 class Node {
     constructor(value) {
         this.value = value;
@@ -870,8 +862,6 @@ class BinarySearchTree {
         return resp;
     }
 }
-*/
-/*
 
 class MaxBinaryHeap {
     constructor() {
@@ -925,10 +915,7 @@ h.insert(6)
 console.log('*******************')
 // console.log(bst.remove(50))
 
-*/
-
-
-/* class Graph {
+class Graph {
     constructor() {
         this.adjacencyList = {};
     }
@@ -961,8 +948,7 @@ console.log('*******************')
         delete this.adjacencyList[vertex];
     }
 }
- */
-/*
+
 class Graph {
     constructor() {
         this.adjacencyList = {};
@@ -991,8 +977,7 @@ class Graph {
         return visited;
     }
 }
-*/
-/*
+
 class Graph {
     constructor() {
         this.adjacencyList = {};
@@ -1027,9 +1012,7 @@ class Graph {
         return visited;
     }
 }
-*/
 
-/*
 class WeightedGraph extends Graph {
     dijkstra(start, finish) {
         const nodes = new PriorityQueue();
@@ -1084,12 +1067,12 @@ class WeightedGraph extends Graph {
         }
     }
 }
-*/
+
 /*** 
  *** Use Graph as a constructor for WeightedGraph to inherit from! 
  ***
  ***/
-/*
+
 function Graph() {
     this.adjacencyList = {};
 }
@@ -1137,12 +1120,12 @@ Graph.prototype.removeEdge = function (vertex1, vertex2) {
         v => v !== vertex1
     );
 };
-*/
+
 /*** 
  *** Use the following as a PriorityQueue (it's a min heap)!  
  ***
  ***/
-/*
+
 class PriorityQueue {
     constructor() {
         this.values = [];
@@ -1181,8 +1164,6 @@ g.addEdge('E', 'F', 1)
 
 console.log(g.dijkstra('A', 'E'))
 
-*/
-/* 
 function solve(coins, value) {
     // the fill() method fills all the elements of an array from a start index to an end index
     // with a static value. Work up to ES6.
@@ -1232,10 +1213,10 @@ function findAllDuplicates(arr) {
     }
     return duplicates;
 }
- */
 
 
-/* function findPair(arr, n) {
+
+function findPair(arr, n) {
     var needed = [];
     for (let i = 0; i < arr.length; i++) {
         console.log(needed)
@@ -1251,10 +1232,10 @@ function findAllDuplicates(arr) {
         }
     }
     return false;
-} */
+}
 
 
-/*
+
 class Trie {
     constructor() {
         this.characters = {};
@@ -1272,7 +1253,7 @@ class Trie {
         return this;
     }
 }
-*/
+
 class Trie {
     constructor() {
         this.characters = {};
