@@ -5,9 +5,6 @@
 // 4. Exponential Search
 // 5. Ternary Search
 
-
-
-
 /*---------------*/
 /* Linear Search */
 /*---------------*/
